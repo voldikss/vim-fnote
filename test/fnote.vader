@@ -1,0 +1,48 @@
+Execute (test init):
+  let @" = "vim-fnote\nthis is a vim plugin."
+  FNoteNew
+  wincmd w
+  let fnote_buf_var = b:fnote
+  let fnote_bufnr = bufnr()
+  let fnote_winid = win_getid()
+  let opts_origin = nvim_win_get_config(fnote_winid)
+
+Execute (test move up):
+  FNoteMove y 1
+  let opts = nvim_win_get_config(fnote_winid)
+  AssertEqual opts_origin.row-1,opts.row
+
+Execute (test move down):
+  FNoteMove y -1
+  let opts = nvim_win_get_config(fnote_winid)
+  AssertEqual opts_origin.row,opts.row
+
+Execute (test right):
+  FNoteMove x 1
+  let opts = nvim_win_get_config(fnote_winid)
+  AssertEqual opts_origin.col+1,opts.col
+
+Execute (test move left):
+  FNoteMove x -1
+  let opts = nvim_win_get_config(fnote_winid)
+  AssertEqual opts_origin.col,opts.col
+
+Execute (test resize inc height):
+  FNoteResize y 1
+  AssertEqual g:fnote_window_height+1,winheight(0)
+
+Execute (test resize dec height):
+  FNoteResize y -1
+  AssertEqual g:fnote_window_height,winheight(0)
+
+Execute (test resize inc width):
+  FNoteResize x 1
+  AssertEqual g:fnote_window_width+1,winwidth(0)
+
+Execute (test resize dec height):
+  FNoteResize x -1
+  AssertEqual g:fnote_window_width,winwidth(0)
+
+Execute (test toggle):
+  FNoteToggle
+  AssertEqual 0,len(getwininfo(fnote_winid))
