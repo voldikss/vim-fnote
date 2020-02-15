@@ -1,6 +1,6 @@
 # vim-fnote
 
-[![Build Status](https://travis-ci.org/voldikss/vim-fnote.svg?branch=master)](https://travis-ci.org/voldikss/vim-fnote)
+![CI](https://github.com/voldikss/vim-fnote/workflows/CI/badge.svg)
 
 Temporary note taking plugin for NeoVim
 
