@@ -4,8 +4,6 @@
 
 Temporary note taking plugin for NeoVim
 
-
-
 ## Installation
 
 ```vim
@@ -20,13 +18,13 @@ Plug 'voldikss/vim-fnote'
 
 ## Configuration
 
-#### **`g:fnote_window_width`**
+#### **`g:fnote_window_maxwidth`**
 
-- Default: `30`
+- Default: `0.4*&columns`
 
-#### **`g:fnote_window_height`**
+#### **`g:fnote_window_maxheight`**
 
-- Default: `5`
+- Default: `0.4*&lines`
 
 ## Key Mappings
 
@@ -37,6 +35,8 @@ This plugin doesn't supply any default mappings.
 #### `:FNoteNew`
 
 Open a new floating window that displays the text in register `"`
+
+Also you can use `:'<,'>FNoteNew`
 
 #### `:FNoteToggle`
 

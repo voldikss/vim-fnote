@@ -10,7 +10,7 @@ Execute (test init):
 Execute (test move up):
   FNoteMove y 1
   let opts = nvim_win_get_config(fnote_winid)
-  AssertEqual opts_origin.row-1,opts.row
+  AssertEqual opts_origin.row+1,opts.row
 
 Execute (test move down):
   FNoteMove y -1
@@ -29,19 +29,19 @@ Execute (test move left):
 
 Execute (test resize inc height):
   FNoteResize y 1
-  AssertEqual g:fnote_window_height+1,winheight(0)
+  AssertEqual opts_origin.height+1,winheight(0)
 
 Execute (test resize dec height):
   FNoteResize y -1
-  AssertEqual g:fnote_window_height,winheight(0)
+  AssertEqual opts_origin.height,winheight(0)
 
 Execute (test resize inc width):
   FNoteResize x 1
-  AssertEqual g:fnote_window_width+1,winwidth(0)
+  AssertEqual opts_origin.width+1,winwidth(0)
 
 Execute (test resize dec height):
   FNoteResize x -1
-  AssertEqual g:fnote_window_width,winwidth(0)
+  AssertEqual opts_origin.width,winwidth(0)
 
 Execute (test toggle):
   FNoteToggle
