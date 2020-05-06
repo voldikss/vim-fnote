@@ -114,8 +114,8 @@ function! s:resize_win(winid) abort
 endfunction
 
 function! s:nvim_win_set_option(winid) abort
-  call nvim_win_set_option(a:winid, 'wrap', v:true)
-  call nvim_win_set_option(a:winid, 'foldcolumn', 1)
+  call nvim_win_set_option(a:winid, 'wrap', v:false)
+  call nvim_win_set_option(a:winid, 'foldcolumn', type(&foldcolumn) == 0 ? 1 : '1')
 endfunction
 
 function! s:get_floatwin_size() abort
